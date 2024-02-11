@@ -9,6 +9,9 @@ import { Single } from "./pages/single";
 import { Context } from "./store/appContext";
 import { Navigate } from "react-router-dom";
 import injectContext from "./store/appContext";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -27,7 +30,9 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
-                        <Route element={store.token ?<Home /> : <Navigate to="/login" />} path="/" />
+                        <Route element={store.token ? <Home /> : <Navigate to="/login" />} path="/" />
+                        <Route element={store.token ? <Navigate to="/" /> : <Login />} path="/login" />
+                        <Route element={store.token ? <Navigate to="/" /> : <Register />} path="/register" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
